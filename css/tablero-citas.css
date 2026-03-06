@@ -313,10 +313,11 @@ body {
 
 /* Chip de hora (nuevo, dentro de fila-estado-servicio) */
 .chip-hora {
+    margin-top: -5px;
     margin-left: auto;
     padding: 2px 8px;
     border-radius: 12px;
-    font-size: 0.75rem;
+    font-size: 1.05rem;
     background-color: rgba(0, 0, 0, 0.05);
     display: inline-flex;
     align-items: center;

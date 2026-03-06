@@ -266,7 +266,7 @@ function renderTablero(data) {
             return cita.turnoTipoServicioCODIGO === filtroServicio;
         });
 
-         // 👉 NUEVO: si hay filtro de servicio y este módulo no tiene citas, se oculta todo el módulo
+        // 👉 NUEVO: si hay filtro de servicio y este módulo no tiene citas, se oculta todo el módulo
         if (filtroServicio && citasFiltradas.length === 0) {
             return; // saltamos a siguiente módulo
         }
@@ -288,7 +288,7 @@ function renderTablero(data) {
         // KPIs por módulo (conteos por estado)
         const kpis = document.createElement('div');
         kpis.classList.add('kpis-modulo');
-        
+
         // 👉 Si hay filtro de servicio, los KPIs se calculan SOLO con las citas filtradas
         const citasFuenteKpi = filtroServicio ? citasFiltradas : citasModulo;
 
@@ -405,6 +405,10 @@ function renderTablero(data) {
                     etiquetaPersona = 'Sin persona asignada'; // si viene completamente vacío
                 }
 
+
+                // Identificación de la persona (cedula / NIT / etc.)
+                const identificacionPersona = (cita.personaIDENTIFICACION || '').trim();
+
                 // Construir nombre del colaborador (puede venir vacío)
                 let etiquetaColaborador = (cita.colaboradorNOMBRECOMPLETO || '').trim();
                 if (!etiquetaColaborador) {
@@ -412,8 +416,13 @@ function renderTablero(data) {
                 }
 
                 infoNombres.innerHTML = `
-                    <div class="nombre-persona">👤 ${etiquetaPersona}</div>
-                    <div class="nombre-colaborador">🙋‍♀️ ${etiquetaColaborador}</div>
+                    <div class="nombre-persona">
+                        👤 ${etiquetaPersona}
+                        ${identificacionPersona ? `<span class="doc-persona">· ID: ${identificacionPersona}</span>` : ''}
+                    </div>
+                    <div class="nombre-colaborador">
+                        🙋‍♀️ ${etiquetaColaborador}
+                    </div>
                 `;
 
                 // ============= IDs (cita, persona, colaborador) =============

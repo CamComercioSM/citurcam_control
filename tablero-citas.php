@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Tablero de Citas - Citurcam</title>
@@ -9,6 +10,7 @@
     <link rel="icon" href="https://cdnsicam.net/img/ccsm/favicon.ico" type="image/x-icon">
     <script src="js/funciones.js"></script>
 </head>
+
 <body>
     <div class="layout">
 
@@ -37,6 +39,12 @@
                 <select id="filtroFecha">
                     <option value="">Cargando...</option>
                 </select>
+            </div>
+
+            <div class="filtro-bloque">
+                <button id="btnRefrescarTablero" type="button" class="btn-refrescar-tablero">
+                    🔄 Actualizar tablero
+                </button>
             </div>
 
 
@@ -135,6 +143,14 @@
             // Reemplaza la fecha global y recarga el tablero
             cargarTableroCitasPorFecha(this.value);
         });
+
+        // Botón de actualización manual del tablero
+        document.getElementById("btnRefrescarTablero").addEventListener("click", function() {
+            const fecha = document.getElementById("filtroFecha").value || FECHA_CITA;
+            segundosRestantes = INTERVALO_SEGUNDOS; // reinicia el contador visual
+            cargarTableroCitas(fecha); // recarga el tablero con la fecha actual del filtro
+        });
+
         // Delegación de eventos para todos los botones .btn-historial
         document.addEventListener("click", function(e) {
             const btn = e.target.closest(".btn-historial");

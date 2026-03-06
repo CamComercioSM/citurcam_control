@@ -266,6 +266,11 @@ function renderTablero(data) {
             return cita.turnoTipoServicioCODIGO === filtroServicio;
         });
 
+         // 👉 NUEVO: si hay filtro de servicio y este módulo no tiene citas, se oculta todo el módulo
+        if (filtroServicio && citasFiltradas.length === 0) {
+            return; // saltamos a siguiente módulo
+        }
+
         const tarjeta = document.createElement('div');
         tarjeta.classList.add('tarjeta-modulo');
 
@@ -283,13 +288,17 @@ function renderTablero(data) {
         // KPIs por módulo (conteos por estado)
         const kpis = document.createElement('div');
         kpis.classList.add('kpis-modulo');
-        const totalModulo = citasModulo.length;
+        
+        // 👉 Si hay filtro de servicio, los KPIs se calculan SOLO con las citas filtradas
+        const citasFuenteKpi = filtroServicio ? citasFiltradas : citasModulo;
+
+        const totalModulo = citasFuenteKpi.length;
         let sinAsignarM = 0,
             pendienteM = 0,
             atendidoM = 0,
             canceladoM = 0;
 
-        citasModulo.forEach(c => {
+        citasFuenteKpi.forEach(c => {
             const est = (c.citaESTADOCITA || '').toUpperCase();
             if (est === 'SIN ASIGNAR') sinAsignarM++;
             else if (est === 'PENDIENTE') pendienteM++;
@@ -370,7 +379,7 @@ function renderTablero(data) {
                 } ? codServ : 'DEFAULT'));
                 chip.textContent = codServ;
 
-                // 🔹 NUEVO: chip con la HORA
+                // chip con la HORA
                 const chipHora = document.createElement('span');
                 chipHora.classList.add('chip-hora');
                 chipHora.innerHTML = `<span class="icono-reloj">🕒</span> ${soloHora(cita.citaFCHCITA)}`;
@@ -440,7 +449,7 @@ function renderTablero(data) {
                     Canc: ${soloHora(cita.citaFCHCANCELACION)}
                 `;
 
-                // 🔹 NUEVO: botón para ver historial / timeline
+                // botón para ver historial / timeline
                 const filaHistorial = document.createElement('div');
                 filaHistorial.classList.add('fila-historial');
 

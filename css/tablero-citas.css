@@ -465,3 +465,47 @@ body {
     text-decoration: underline;
     cursor: pointer;
 }
+
+
+/* Botón "Actualizar tablero" en la barra de filtros */
+.btn-refrescar-tablero {
+    display: inline-flex;              /* Alinea icono + texto */
+    align-items: center;
+    gap: 0.35rem;                      /* Separación entre icono y texto */
+
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;              /* Pastilla */
+    border: 1px solid #0d6efd;         /* Azul tipo bootstrap primary */
+    background-color: #0d6efd;
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+    transition:
+        background-color 0.15s ease,
+        border-color 0.15s ease,
+        box-shadow 0.15s ease,
+        transform 0.05s ease;
+}
+
+.btn-refrescar-tablero:hover {
+    background-color: #0b5ed7;
+    border-color: #0b5ed7;
+    box-shadow: 0 2px 4px rgba(13, 110, 253, 0.35);
+    transform: translateY(-1px);       /* Pequeño levantamiento visual */
+}
+
+.btn-refrescar-tablero:active {
+    background-color: #0a58ca;
+    border-color: #0a58ca;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    transform: translateY(0);          /* Vuelve a su sitio al hacer click */
+}
+
+.btn-refrescar-tablero:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.45);
+}

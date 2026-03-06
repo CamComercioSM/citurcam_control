@@ -1,0 +1,467 @@
+/* ================================
+   BASE
+================================ */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background: #f4f6fb;
+    color: #222;
+}
+
+.layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* ================================
+   HEADER SUPERIOR
+================================ */
+.header {
+    padding: 10px 20px;
+    background: linear-gradient(90deg, #0059c9, #2196f3);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-titulo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.header-derecha {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 0.9rem;
+}
+
+#contador {
+    font-weight: bold;
+}
+
+#ultima-actualizacion {
+    font-style: italic;
+}
+
+/* ================================
+   BARRA DE FILTROS + RESUMEN
+================================ */
+.barra-superior {
+    padding: 10px 20px;
+    background: #ffffff;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    z-index: 1;
+}
+
+.filtro-bloque {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #333;
+}
+
+.filtro-bloque label {
+    font-size: 0.9rem;
+}
+
+.filtro-bloque select {
+    padding: 5px 10px;
+    border-radius: 4px;
+    border: 1px solid #ccd2e3;
+    background: #f8f9ff;
+    color: #222;
+}
+
+.resumen-estadisticas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-left: auto;
+}
+
+.chip-resumen {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 6px 10px;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid #d4d9ea;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    white-space: nowrap;
+}
+
+.chip-resumen span.valor {
+    font-weight: bold;
+    color: #0059c9;
+}
+
+/* ================================
+   CONTENIDO PRINCIPAL
+================================ */
+.contenido {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px 20px;
+}
+
+.contenedor-tarjetas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: flex-start;
+}
+
+/* ================================
+   TARJETA POR MÓDULO
+================================ */
+.tarjeta-modulo {
+    background: #ffffff;
+    color: #222;
+    width: 340px;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(15, 35, 95, 0.12);
+    padding: 12px 14px;
+    border-left: 6px solid #2196f3;
+    display: flex;
+    flex-direction: column;
+    max-height: 80vh;
+}
+
+.titulo-modulo {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+.subtitulo-modulo {
+    font-size: 0.8rem;
+    color: #6c757d;
+    margin-bottom: 6px;
+}
+
+.kpis-modulo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    font-size: 0.75rem;
+    margin-bottom: 6px;
+}
+
+.kpis-modulo span {
+    background: #f4f6fb;
+    border-radius: 10px;
+    padding: 2px 6px;
+    border: 1px solid #e0e4f0;
+}
+
+/* ================================
+   LISTA DE CITAS
+================================ */
+.lista-citas {
+    overflow-y: auto;
+    padding-right: 4px;
+    border-top: 1px solid #eef1f7;
+    margin-top: 6px;
+}
+
+.bloque-cita {
+    padding: 7px 8px;
+    margin-top: 6px;
+    background: #f9fbff;
+    border-radius: 6px;
+    display: flex;              /* ← ya no grid */
+    flex-direction: column;     /* ← un solo bloque vertical */
+    gap: 4px;
+    font-size: 0.82rem;
+    border: 1px solid #e2e7f3;
+}
+
+/* El bloque viejo de hora se oculta, ya usamos la hora en chip-hora */
+.bloque-cita-hora {
+    display: none;
+}
+
+.bloque-cita-detalles {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+/* ================================
+   ESTADO + SERVICIO + HORA
+================================ */
+.fila-estado-servicio {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.estado-cita {
+    font-size: 0.8rem;
+}
+
+/* Colores texto para el span.estado-cita */
+.estado-sin-asignar {
+    color: #6c757d;
+}
+
+.estado-pendiente {
+    color: #d39e00;
+    font-weight: bold;
+}
+
+.estado-atendido {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.estado-cancelado {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+/* Chip de servicio */
+.chip-servicio {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    color: #fff;
+    align-self: flex-start;
+}
+
+/* Colores por servicio */
+.servicio-CAE {
+    background: #007bff;
+}
+
+.servicio-CAJA {
+    background: #28a745;
+}
+
+.servicio-RNT {
+    background: #6f42c1;
+}
+
+.servicio-REVI {
+    background: #fd7e14;
+}
+
+.servicio-DEFAULT {
+    background: #495057;
+}
+
+/* Chips genéricos (para la nueva versión de tarjetas) */
+.chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: #f1f5f9;
+    color: #0f172a;
+}
+
+.chip-estado {
+    text-transform: uppercase;
+}
+
+/* Colores del chip-estado por estado de cita */
+.estado-ATENDIDO {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.estado-PENDIENTE {
+    background: #ffe4e6;
+    color: #9f1239;
+}
+
+.estado-ACTIVADA,
+.estado-ATENDIENDO {
+    background: #e0f2fe;
+    color: #075985;
+}
+
+.estado-SIN\ ASIGNAR {
+    background: #e5e7eb;
+    color: #374151;
+}
+
+.estado-INASISTENCIA {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* Chip de hora (nuevo, dentro de fila-estado-servicio) */
+.chip-hora {
+    margin-left: auto;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    background-color: rgba(0, 0, 0, 0.05);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.icono-reloj {
+    font-size: 0.85em;
+}
+
+/* ================================
+   DATOS EXTRA DE LA CITA
+================================ */
+.persona-colaborador {
+    font-size: 0.78rem;
+    margin: 2px 0;
+    color: #222;
+}
+
+.persona-colaborador .nombre-persona {
+    font-weight: 600;
+}
+
+.persona-colaborador .nombre-colaborador {
+    color: #555;
+    font-style: italic;
+}
+
+.detalle-ids {
+    font-size: 0.75rem;
+    color: #555;
+}
+
+.detalle-ids span {
+    margin-right: 8px;
+}
+
+.tiempos-cita {
+    font-size: 0.75rem;
+    color: #333;
+}
+
+.tiempos-cita strong {
+    font-weight: 600;
+}
+
+.fechas-crudas {
+    font-size: 0.7rem;
+    color: #7a8699;
+}
+
+.observaciones-cita {
+    font-size: 0.7rem;
+    color: #555;
+}
+
+.links-cita {
+    font-size: 0.7rem;
+    margin-top: 2px;
+}
+
+.links-cita a {
+    color: #0059c9;
+    text-decoration: none;
+}
+
+.links-cita a:hover {
+    text-decoration: underline;
+}
+
+/* ================================
+   MENSAJES VARIOS
+================================ */
+.mensaje-sin-citas {
+    font-size: 0.8rem;
+    color: #999;
+    margin-top: 4px;
+    font-style: italic;
+}
+
+.loading-message {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #0059c9;
+    margin-top: 40px;
+}
+
+.mensaje-error {
+    text-align: center;
+    color: #dc3545;
+    margin-top: 20px;
+}
+
+/* ================================
+   COLORES DE FONDO POR ESTADO
+   (aplicados a .bloque-cita)
+================================ */
+.cita-bg-sin-asignar {
+    background: #f1f3f5 !important;
+    border-left-color: #adb5bd !important;
+    color: #343a40 !important;
+}
+
+.cita-bg-pendiente {
+    background: #fff4ce !important;
+    border-left-color: #ffc107 !important;
+    color: #664d03 !important;
+}
+
+.cita-bg-atendiendo {
+    background: #d1e7ff !important;
+    border-left-color: #0d6efd !important;
+    color: #084298 !important;
+}
+
+.cita-bg-atendido {
+    background: #d3f9d8 !important;
+    border-left-color: #28a745 !important;
+    color: #0f5132 !important;
+}
+
+.cita-bg-cancelado {
+    background: #ffe3e3 !important;
+    border-left-color: #dc3545 !important;
+    color: #842029 !important;
+}
+
+.cita-bg-default {
+    background: #e9ecef !important;
+    border-left-color: #6c757d !important;
+    color: #495057 !important;
+}
+
+/* ================================
+   HISTORIAL (BOTÓN / FILA)
+================================ */
+.fila-historial {
+    margin-top: 4px;
+}
+
+.btn-link.btn-historial {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 0.75rem;
+    text-decoration: underline;
+    cursor: pointer;
+}

@@ -1,0 +1,121 @@
+.modal-historial {
+    position: fixed;
+    inset: 0;
+    display: none;              /* Por defecto oculto */
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.modal-historial.activo {
+    display: flex;
+}
+
+.modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.55);
+}
+
+.modal-dialog {
+    position: relative;
+    background: #ffffff;
+    border-radius: 1rem;
+    padding: 1.5rem 1.75rem;
+    max-width: 480px;
+    width: 100%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.25);
+    z-index: 1;
+}
+
+.modal-titulo {
+    margin: 0 0 0.25rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.modal-subtitulo {
+    margin: 0 0 1rem;
+    font-size: 0.85rem;
+    color: #64748b;
+}
+
+.modal-cerrar {
+    position: absolute;
+    inset-inline-end: 0.75rem;
+    top: 0.75rem;
+    border: none;
+    background: transparent;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #6b7280;
+}
+
+/* Botón link para historial */
+.btn-link.btn-historial {
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.8rem;
+    color: #0f766e;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/* Timeline */
+.timeline-estados {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 1.25rem;
+    position: relative;
+}
+
+.timeline-estados::before {
+    content: "";
+    position: absolute;
+    left: 0.45rem;
+    top: 0.25rem;
+    bottom: 0.25rem;
+    width: 2px;
+    background: #e5e7eb;
+}
+
+.timeline-estados li {
+    position: relative;
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.25rem;
+}
+
+.timeline-punto {
+    position: absolute;
+    left: -1rem;
+    top: 0.25rem;
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 999px;
+    background: #0f766e;
+    border: 2px solid #ecfdf3;
+    box-shadow: 0 0 0 2px #ccfbf1;
+}
+
+.timeline-etiqueta {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.timeline-fecha {
+    display: block;
+    font-size: 0.78rem;
+    color: #6b7280;
+}
+
+.timeline-detalle {
+    font-size: 0.78rem;
+    color: #4b5563;
+}
